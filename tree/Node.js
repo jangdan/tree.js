@@ -23,41 +23,15 @@ Node.prototype.addChild = function(child){
 	}
 
 
-	//changes to 'child'
-	child.parent = this; //understandable without comments
-	child.depth = this.depth + 1;
-
-	Array.prototype.push.apply(child.ancestors, this.ancestors); //'this''s ancestors are also 'child''s ancestors
-	child.ancestors.push(this); //'this' is also an ancestor
-
-
-
-	//changes to 'this'
 	this.children.push(child);
 
-	this.decendants.push(child); //'child' is a child, but it's also a decendant of 'this'
-	Array.prototype.push.apply(this.decendants, child.decendants); //add all existing decendants if 'child' to 'this''s list of decendants
+	this.addDecendants( [child] );
+	this.addDecendants( child.decendants );
 
 
-
-	//changes to the ancestors
-	for(i = 0; i < this.ancestors.length; ++i){ //'child' is also a decendant of all of 'this''s ancestors
-		this.ancestors[i].decendants.push(child);
-		Array.prototype.push.apply(this.ancestors[i].decendants, child.decendants);
-	}
-
-
-
-	//changes to the decendants
-	for(i = 0; i < this.decendants.length; ++i){
-
-		child.decendants[i].ancestors.push(child);
-		Array.prototype.push.apply(child.decendants[i].ancestors, this.ancestors);
-
-	}
+	child.setParent(this);
 
 }
-
 
 
 
@@ -72,18 +46,13 @@ Node.prototype.removeChild = function(child){
 	}
 
 
-	child.parent = null; //remove any reference, any relation to 'this'
-	child.depth = 0;
-
-
-	child.ancestors = []; //no more ancestors
-
-
 	this.children.splice(this.children.indexOf(child), 1); //remove 'child' from the children array
 
-	this.decendants.splice(this.decendants.indexOf(child), 1); //remove 'child' from the decendands array
-	for(i = 0; i < child.decendants.length; ++i)
-		this.decendants.splice(this.decendants.indexOf(child.decendants[i]), 1); //remove all decendants of 'child' from decendants
+	this.removeDecendants( [child] );
+	this.removeDecendants( child.decendants );
+
+
+	child.removeParent(this);
 
 
 	//ADD: recalculate child's decendants' depths
@@ -96,6 +65,101 @@ Node.prototype.breakBranch = function(){ //probably will change this function na
 
 	this.parent.removeChild(this);
 
+}
+
+
+
+
+Node.prototype.setParent = function(parent){
+
+	this.parent = parent;
+	this.depth = parent.depth + 1;
+
+	this.addAncestors( [parent] );
+	this.addAncestors( parent.ancestors );
+
+}
+
+
+
+Node.prototype.removeParent = function(parent){
+
+	this.parent = null;
+	this.depth = 0;
+
+	this.removeAncestors( [parent] );
+	this.removeAncestors( parent.ancestors );
+
+}
+
+
+
+
+Node.prototype.addAncestors = function(ancestors){ //"goes up" the tree
+
+	Array.prototype.push.apply(this.ancestors, ancestors);
+
+
+	if(this.isLeaf()) return;
+
+	for(i = 0; i < this.children.length; ++i) this.children[i].addAncestors(ancestors);
+
+}
+
+
+
+Node.prototype.removeAncestors = function(ancestors){
+
+	for(i = 0; i < ancestors.length; ++i)
+		this.ancestors.splice( this.ancestors.indexOf(ancestors[i]), 1 );
+
+
+	if(this.isLeaf()) return;
+
+	for(i = 0; i < this.children.length; ++i)
+		this.children[i].removeAncestors(ancestors);
+
+}
+
+
+
+
+Node.prototype.addDecendants = function(decendants){ //"goes down" the tree
+	
+	Array.prototype.push.apply(this.decendants, decendants);
+
+
+	if(this.isRoot()) return;
+
+	this.parent.addDecendants(decendants);
+
+}
+
+
+
+Node.prototype.removeDecendants = function(decendants){
+
+	for(i = 0; i < decendants.length; ++i)
+		this.decendants.splice( this.decendants.indexOf(decendants[i]), 1 );
+
+
+	if(this.isRoot()) return;
+
+	parent.removeDecendants(decendants);
+
+}
+
+
+
+
+//conditionals
+Node.prototype.isLeaf = function(){
+	return !this.children.length;
+}
+
+
+Node.prototype.isRoot = function(){
+	return !this.depth;
 }
 
 
