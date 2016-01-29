@@ -27,9 +27,19 @@ Node.prototype.addChild = function(child){
 	this.children.push(child);
 
 
-	this.decendants.push(child); //'child' is a child, but it's also a decendant of 'this'
+	//'this''s ancestors are also 'child''s ancestors
+	Array.prototype.push.apply(child.ancestors, this.ancestors);
+	child.ancestors.push(this);
 
+
+	this.decendants.push(child); //'child' is a child, but it's also a decendant of 'this'
 	Array.prototype.push.apply(this.decendants, child.decendants); //add all existing decendants if 'child' to 'this''s list of decendants
+
+
+	for(i = 0; i < this.ancestors.length; ++i){ //'child' is also a decendant of all of 'this''s ancestors
+		this.ancestors[i].decendants.push(child);
+		Array.prototype.push.apply(this.ancestors[i].decendants, child.decendants);
+	}
 
 }
 
