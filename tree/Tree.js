@@ -1,21 +1,11 @@
-var nodes = [];
+var Tree = function(name){
 
-var example = {
+	this.name = name;
 
-	children: [],
-	parent,
 
-	recursivechildrencount
-
-	specific_centerofmass,
-
+	this.root = new Node("root");
+	
+	this.root.parent = null;
+	this.root.depth = 0;
 
 }
-
-var Tree = function(){
-
-	this.motherNode = new Node(this);
-
-}
-
-Tree.prototype.
