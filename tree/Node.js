@@ -22,6 +22,8 @@ Node.prototype.addChild = function(child){
 
 
 	child.parent = this; //understandable without comments
+	child.depth = this.depth + 1;
+
 	this.children.push(child);
 
 
