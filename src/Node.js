@@ -53,9 +53,6 @@ Node.prototype.removeChild = function(child){
 
 
 	child.removeParent(this);
-
-
-	//ADD: recalculate child's decendants' depths
 	
 }
 
@@ -101,6 +98,9 @@ Node.prototype.addAncestors = function(ancestors){ //"goes down" the tree
 	Array.prototype.push.apply(this.ancestors, ancestors);
 
 
+	this.updateDepth();
+
+
 	if(this.isLeaf()) return;
 
 	for(i = 0; i < this.children.length; ++i) this.children[i].addAncestors(ancestors);
@@ -115,10 +115,22 @@ Node.prototype.removeAncestors = function(ancestors){
 		this.ancestors.splice( this.ancestors.indexOf(ancestors[i]), 1 );
 
 
+	this.updateDepth();
+
+
 	if(this.isLeaf()) return;
 
 	for(i = 0; i < this.children.length; ++i)
 		this.children[i].removeAncestors(ancestors);
+
+}
+
+
+
+
+Node.prototype.updateDepth = function(){
+
+	this.depth = this.parent.depth + 1;
 
 }
 
