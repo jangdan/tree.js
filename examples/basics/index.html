@@ -37,27 +37,31 @@
 
 
 
-			var 나무 = new Tree("나무");
+			var 나무 = new Tree("나무"); //ah yes unicode variables. sorry
+			나무.setRoot( new Node("root") );
 
 
-			나무.root.addChild(new Node("smallbranch"));
+			나무.root.addChild( new Node("smallbranch") );
 			나무.root.addChild(giganticbranch);
 
 
-			//나무.root.removeChild( 나무.root.getDecendantByName("giganticbranch") );
-			나무.root.getDecendantByName("giganticbranch").breakBranch();
+			//the two lines of code below do THE SAME THING (so only keep one of them uncommented or else an error occurs):
+			나무.root.removeChild( 나무.root.getDecendantByName("giganticbranch") );
+			//나무.root.getDecendantByName("giganticbranch").breakBranch();
 			
 
+			//output (what u see on the js console)
 			console.log(나무);
 			console.log(giganticbranch);
 
 
-			function addNodesrecursively(target, iterations){
+
+			function addNodesrecursively(target, iterations){ //a simple recursive function to add Nodes
 
 				if(iterations <= 0) return;
 
-				target.addChild(new Node(""+(ITERATION_COUNT - iterations + 1)+"번째"));
-				addNodesrecursively(target.children[0], iterations - 1);
+				target.addChild( new Node( "" + (ITERATION_COUNT - iterations + 1) + "번째" ) );
+				addNodesrecursively( target.children[0], iterations - 1 );
 
 			}
 

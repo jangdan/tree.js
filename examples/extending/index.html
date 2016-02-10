@@ -28,31 +28,49 @@
 		
 		<script type = "text/javascript">
 
+			//initialize a new type of Node, the 'SpecialNode'
 			var SpecialNode = function(name, value){
 
 				Node.apply(this, arguments);
 
 				this.value = value;
 
-				//<insert YOUR OWN custom variables/data/information here
+				//<insert YOUR OWN custom variables/data/information here>
 
 			}
 
 			SpecialNode.prototype = Node.prototype;
 
-
-			var s = new SpecialNode( "I am special; I have a value", 10 );
-
-			s.addChild(new SpecialNode( "I am a special-child", 100 ));
-			s.addChild(new SpecialNode( "I am a spacial-child", 100 ));
+			//we're done! this is all you need to create your own custom node to use in trees
 
 
-			var specialTree = new Tree( "THE TREE WHICH POSESSES SPECIAL NODES" );
 
-			specialTree.root.addChild(s); //regular nodes can have other "extended" nodes as children
+			//demonstrates 'SpecialNode'
+
+			var s = new SpecialNode( "special parent", 10 );
+
+			s.addChild( new SpecialNode( "I am a special-child", 100 ) );
+			s.addChild( new SpecialNode( "I am a spacial-child", 100 ) );
+
+
+			var specialTree = new Tree( "special tree" );
+			specialTree.setRoot( new SpecialNode( "THE ROOT", -10 ) );
+
+			specialTree.root.addChild(s);
+
+
+
+			//demonstrates the cross-compatibility between different types of Nodes
+
+			var normalTree = new Tree( "normal tree" );
+			normalTree.setRoot( new Node( "a normal node") ); //note that this is an "unextended", regualar, default Node
+
+			var n = new SpecialNode( "but a special child", 1000 );
+			normalTree.root.addChild(n); //however, regular nodes can have other "extended" nodes as children
 
 
 			console.log(specialTree);
+			console.log(normalTree);
 
 		</script>
 
