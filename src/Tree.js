@@ -5,6 +5,7 @@ var Tree = function(name){
 }
 
 
+
 Tree.prototype.setRoot = function(root){
 
 	this.root = root;
