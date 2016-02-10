@@ -7,7 +7,7 @@ var Node = function(name){
 	this.parent = null;
 	this.children = [];
 
-	this.ancestors = [];
+	this.ancestors = []; //the parent, grandparent, and so on in ONE ARRAY!
 	this.decendants = []; //recursively-reachable children, grandchildren, great-grandchildren, etc.
 	
 }
@@ -56,6 +56,7 @@ Node.prototype.removeChild = function(child){
 
 
 	//ADD: recalculate child's decendants' depths
+	
 }
 
 
