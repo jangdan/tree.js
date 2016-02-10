@@ -2,6 +2,7 @@ var Node = function(name){
 	
 	//https://en.wikipedia.org/wiki/Tree_(data_structure)#Terminologies_used_in_Trees
 	this.name = name;
+
 	this.depth = null;
 
 	this.parent = null;
