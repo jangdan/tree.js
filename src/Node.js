@@ -18,7 +18,7 @@ var Node = function(name){
 Node.prototype.addChild = function(child){
 
 	if(!child){ //falsey detection
-		console.warn("The child to add is "+child);
+		console.error("The child to add is "+child);
 		return; //"you're not a even a node!"
 	}
 
@@ -38,10 +38,10 @@ Node.prototype.addChild = function(child){
 Node.prototype.removeChild = function(child){
 
 	if(!child){ //falsey detection
-		console.warn("The child to remove is "+child);
+		console.error("The child to remove is "+child);
 		return; //"you're one of my children!"
 	} else if(this.children.indexOf(child) == -1){
-		console.warn("The specified child is not a child of the parent; cannot remove child");
+		console.error("The specified child is not a child of the parent; cannot remove child");
 		return;
 	}
 
