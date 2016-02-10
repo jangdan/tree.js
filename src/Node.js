@@ -96,7 +96,7 @@ Node.prototype.removeParent = function(parent){
 
 
 
-Node.prototype.addAncestors = function(ancestors){ //"goes up" the tree
+Node.prototype.addAncestors = function(ancestors){ //"goes down" the tree
 
 	Array.prototype.push.apply(this.ancestors, ancestors);
 
@@ -125,7 +125,7 @@ Node.prototype.removeAncestors = function(ancestors){
 
 
 
-Node.prototype.addDecendants = function(decendants){ //"goes down" the tree
+Node.prototype.addDecendants = function(decendants){ //"goes up" the tree
 	
 	Array.prototype.push.apply(this.decendants, decendants);
 
