@@ -193,7 +193,7 @@ Node.prototype.getDecendantByName = function(name){
 
 
 Node.prototype.getChildrenByName = function(name){
-	return children.filter( function(child){ return child.name === name } );
+	return this.children.filter( function(child){ return child.name === name } );
 }
 
 
