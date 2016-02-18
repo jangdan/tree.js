@@ -42,7 +42,7 @@
 
 
 			나무.root.addChild( new Node("smallbranch") );
-			나무.root.addChild(giganticbranch);
+			나무.root.addChild(giganticbranch); //add 'giganticbranch', then remove it from the root to test the update functions
 
 
 			//the two lines of code below do THE SAME THING (so only keep one of them uncommented or else an error occurs):
@@ -53,6 +53,9 @@
 			//output (what u see on the js console)
 			console.log(나무);
 			console.log(giganticbranch);
+
+			console.log("giganticbranch is a root node: " + giganticbranch.isRoot());
+			console.log("smallbranch is a leaf: " + 나무.root.getChildByName("smallbranch").isLeaf());
 
 
 

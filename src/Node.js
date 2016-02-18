@@ -168,12 +168,12 @@ Node.prototype.removeDecendants = function(decendants){
 
 //conditionals
 Node.prototype.isLeaf = function(){
-	return !this.children.length;
+	return this.children.length <= 0;
 }
 
 
 Node.prototype.isRoot = function(){
-	return !this.depth;
+	return !this.depth || this.depth <= 0;
 }
 
 
