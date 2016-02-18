@@ -116,7 +116,7 @@ Node.prototype.removeAncestors = function(ancestors){
 		this.ancestors.splice( this.ancestors.indexOf(ancestors[i]), 1 );
 
 
-	this.updateDepth();
+	if(!!this.parent) this.updateDepth();
 
 
 	if(this.isLeaf()) return;
