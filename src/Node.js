@@ -173,7 +173,7 @@ Node.prototype.isLeaf = function(){
 
 
 Node.prototype.isRoot = function(){
-	return !this.depth || this.depth <= 0;
+	return !this.parent || !this.depth || this.depth <= 0 ;
 }
 
 
