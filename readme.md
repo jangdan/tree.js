@@ -9,4 +9,4 @@ _tree.js_ is a minimal JavaScript library that can create and manipulate tree da
 
 2. then, include it to your `.html` file with this snippet: `<script src = "tree.min.js"></script>`
 
-3. check the [examples](https://github.com/jangdan/tree.js/tree/master/examples) to learn the basics. if you want results, there is a rudementary GitHub pages site set up: <http://jangdan.github.io/tree.js/examples/INSERT_EXAMPLE_NAME_HERE>. you're on your own after that.
+3. check the [examples](http://jangdan.github.io/tree.js/examples) to learn the basics. you're on your own after that.
