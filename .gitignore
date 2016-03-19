@@ -1,4 +1,12 @@
+#project-related
+
 *.command
-/index.html
 /utilities/*
 /build/*
+
+
+
+#website-related
+
+index.html
+example/index.html
