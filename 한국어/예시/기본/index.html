@@ -85,7 +85,7 @@
 				if(되풀이된수 <= 0) return;
 
 				대상.addChild( new Node( "" + (후손_수 - 되풀이된수 + 1) + "번째" ) );
-				addNodesrecursively( 대상.children[0], 되풀이된수 - 1 );
+				후손만들기( 대상.children[0], 되풀이된수 - 1 );
 
 			}
 
