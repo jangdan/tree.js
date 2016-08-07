@@ -104,7 +104,7 @@ Node.prototype.addAncestors = function(ancestors){ //"goes down" the tree
 
 	if(this.isLeaf()) return;
 
-	for(i = 0; i < this.children.length; ++i) this.children[i].addAncestors(ancestors);
+	for( var i = 0; i < this.children.length; ++i) this.children[i].addAncestors(ancestors);
 
 }
 
@@ -112,7 +112,7 @@ Node.prototype.addAncestors = function(ancestors){ //"goes down" the tree
 
 Node.prototype.removeAncestors = function(ancestors){
 
-	for(i = 0; i < ancestors.length; ++i)
+	for( var i = 0; i < ancestors.length; ++i)
 		this.ancestors.splice( this.ancestors.indexOf(ancestors[i]), 1 );
 
 
@@ -121,7 +121,7 @@ Node.prototype.removeAncestors = function(ancestors){
 
 	if(this.isLeaf()) return;
 
-	for(i = 0; i < this.children.length; ++i)
+	for( var i = 0; i < this.children.length; ++i)
 		this.children[i].removeAncestors(ancestors);
 
 }
@@ -153,7 +153,7 @@ Node.prototype.addDecendants = function(decendants){ //"goes up" the tree
 
 Node.prototype.removeDecendants = function(decendants){
 
-	for(i = 0; i < decendants.length; ++i)
+	for( var i = 0; i < decendants.length; ++i)
 		this.decendants.splice( this.decendants.indexOf(decendants[i]), 1 );
 
 
