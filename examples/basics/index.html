@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html lang = "en">
 
@@ -9,7 +9,9 @@
 		<meta name = "description" content = "an example of basic usage of tree.js">
 		<meta name = "keywords" content = "tree.js, JavaScript, tree data structure, library, example">
 
+
         <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+
 
 
 		<title>tree.js - basics</title>
@@ -21,11 +23,15 @@
 		<h1>basics</h1>
 
 		<p>
+
 			an introductory example where you can learn the bare basics of this library.
+
 		<p>
 
 		<p>
+
 			take a look at the <a href = "https://github.com/jangdan/tree.js/blob/master/examples/extending/index.html">source code</a>, then check the JavaScript console for the result. (<a href = "http://webmasters.stackexchange.com/questions/8525/how-to-open-the-javascript-console-in-different-browsers">how to open the JavaScript console</a>)
+
 		</p>
 
 
@@ -38,6 +44,7 @@
 			var ITERATION_COUNT = 30;
 
 
+
 			var giganticbranch = new Node("giganticbranch");
 
 			addNodesrecursively(giganticbranch, ITERATION_COUNT);
@@ -45,24 +52,36 @@
 
 
 			var 나무 = new Tree("나무"); //ah yes unicode variables. sorry
+
 			나무.setRoot( new Node("root") );
 
 
 			나무.root.addChild( new Node("smallbranch") );
-			나무.root.addChild(giganticbranch); //add 'giganticbranch', then remove it from the root to test the update functions
+
+			나무.root.addChild(giganticbranch); //add `giganticbranch`, then remove it from the root to test the update functions
+
 
 
 			//the two lines of code below do THE SAME THING (so only keep one of them uncommented or else an error occurs):
+
 			나무.root.removeChild( 나무.root.getDecendantByName("giganticbranch") );
+
 			//나무.root.getDecendantByName("giganticbranch").breakBranch();
 			
 
+
 			//output (what u see on the js console)
+
 			console.log(나무);
+
 			console.log(giganticbranch);
 
+
 			console.log("giganticbranch is a root node: " + giganticbranch.isRoot());
+
 			console.log("smallbranch is a leaf: " + 나무.root.getChildByName("smallbranch").isLeaf());
+
+
 
 
 
@@ -70,7 +89,11 @@
 
 				if(iterations <= 0) return;
 
+
+
 				target.addChild( new Node( "" + (ITERATION_COUNT - iterations + 1) + "번째" ) );
+
+
 				addNodesrecursively( target.children[0], iterations - 1 );
 
 			}
@@ -79,8 +102,11 @@
 
 
 		<p>
+
 			note: this page was loaded with <i>absolutely zero</i> custom CSS. congratulate me
+			
 		</p>
 
 	</body>
+
 </html>

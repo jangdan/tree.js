@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html lang = "en">
 
@@ -9,8 +9,10 @@
 		<meta name = "description" content = "an example showing how to extend the basic classes of tree.js">
 		<meta name = "keywords" content = "tree.js, JavaScript, tree data structure, library, example">
 
+
 		<meta name = "viewport" content = "width = device-width, initial-scale = 1">
  
+
 
 		<title>tree.js - extending</title>
 
@@ -21,11 +23,15 @@
 		<h1>extending</h1>
 
 		<p>
+
 			this example shows how you can <i>"extend"</i> the simple architecture of tree.js to suit any of your data manipulation needs.
+
 		</p>
 
 		<p>
+
 			take a look at the <a href = "https://github.com/jangdan/tree.js/blob/master/examples/extending/index.html">source code</a> if you want, then open the JavaScript console in your browser to see the result of this example. (<a href = "http://webmasters.stackexchange.com/questions/8525/how-to-open-the-javascript-console-in-different-browsers">how to open the JavaScript console</a>)
+
 		</p>
 		
 
@@ -35,12 +41,16 @@
 		
 		<script type = "text/javascript">
 
-			//initialize a new type of Node, the 'SpecialNode'
+			//initialize a new type of Node, the `SpecialNode`
+
 			function SpecialNode(name, value){
 
 				Node.call(this, name);
 
+
+
 				this.value = value;
+
 
 				//<insert YOUR OWN custom variables/data/information here>
 
@@ -48,41 +58,55 @@
 
 			SpecialNode.prototype = Object.create( Node.prototype );
 
-
 			SpecialNode.prototype.constructor = SpecialNode;
 
 			//we're done! this is all you need to create your own custom node to use in trees
 
 
 
-			//demonstrates 'SpecialNode'
+
+
+			//demonstrates `SpecialNode`
 
 			var s = new SpecialNode( "special parent", 10 );
 
+
 			s.addChild( new SpecialNode( "I am a special-child", 100 ) );
+
 			s.addChild( new SpecialNode( "I am a spacial-child", 100 ) );
 
 
+
 			var specialTree = new Tree( "special tree" );
+
 			specialTree.setRoot( new SpecialNode( "THE ROOT", -10 ) );
 
+
 			specialTree.root.addChild(s);
+
 
 
 
 			//demonstrates the cross-compatibility between different types of Nodes
 
 			var normalTree = new Tree( "normal tree" );
+
 			normalTree.setRoot( new Node( "a normal node") ); //note that this is an "unextended", regualar, default Node
 
+
+
 			var n = new SpecialNode( "but a special child", 1000 );
+
+
 			normalTree.root.addChild(n); //however, regular nodes can have other "extended" nodes as children
 
 
 			console.log(specialTree);
+
 			console.log(normalTree);
 
 		</script>
 
 	</body>
+
 </html>
