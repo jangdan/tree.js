@@ -36,9 +36,9 @@
 		<script type = "text/javascript">
 
 			//initialize a new type of Node, the 'SpecialNode'
-			var SpecialNode = function(name, value){
+			function SpecialNode(name, value){
 
-				Node.apply(this, arguments);
+				Node.call(this, name);
 
 				this.value = value;
 
@@ -46,7 +46,10 @@
 
 			}
 
-			SpecialNode.prototype = Node.prototype;
+			SpecialNode.prototype = Object.create( Node.prototype );
+
+
+			SpecialNode.prototype.constructor = SpecialNode;
 
 			//we're done! this is all you need to create your own custom node to use in trees
 
