@@ -1,9 +1,9 @@
-#tree.js
+# tree.js
 
 _tree.js_는 JavaScript(자바스크립트)에서 트리 구조를 유연하고 간결하고 깨끗하게 구현하는 라이브러리입니다.
 
 
-###쓰는 법
+### 쓰는 법
 
 1. [최신 릴리쓰 페이지](https://github.com/jangdan/tree.js/releases/latest)에서 `tree.min.js` 파일을 내려받아 저장합니다.
 

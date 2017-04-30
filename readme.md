@@ -1,9 +1,9 @@
-#tree.js
+# tree.js
 
 _tree.js_ is a minimal JavaScript library that can create and manipulate tree data structures.
 
 
-###using
+### using
 
 1. download the `tree.min.js` file from [the latest release page](https://github.com/jangdan/tree.js/releases/latest)
 
